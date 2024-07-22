@@ -33,16 +33,16 @@ h1 {
 }
 
 #playerDisplay, #computerDisplay {
-    font-size: 1.5rem; /* Reduced from 2.5rem */
+    font-size: 1rem; /* Reduced from 2.5rem */
 }
 
 #resultDisplay {
-    font-size: 4rem; /* Reduced from 5rem */
-    margin: 20px 0; /* Adjusted from 30px 0 */
+    font-size: 3rem; /* Reduced from 5rem */
+    margin: 30px 0; /* Adjusted from 30px 0 */
 }
 
 .scoreDisplay {
-    font-size: 2rem; /* Reduced from 3rem */
+    font-size: 1.5rem; /* Reduced from 3rem */
 }
 
 .greenText {
