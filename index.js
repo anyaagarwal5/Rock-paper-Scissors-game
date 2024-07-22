@@ -1,126 +1,48 @@
-// Complete logic of game inside this function
-const game = () => {
-    let playerScore = 0;
-    let computerScore = 0;
-    let moves = 0;
+const choices = ["rock", "paper", "scissors"];
 
-    // Function to play the game
-    const playGame = () => {
-        const rockBtn = document.querySelector('.rock');
-        const paperBtn = document.querySelector('.paper');
-        const scissorBtn = document.querySelector('.scissor');
-        const playerOptions = [rockBtn, paperBtn, scissorBtn];
-        const computerOptions = ['rock', 'paper', 'scissors'];
+const playerDisplay = document.getElementById("playerDisplay");
+const computerDisplay = document.getElementById("computerDisplay");
+const resultDisplay = document.getElementById("resultDisplay");
+const playerScoreDisplay = document.getElementById("playerScoreDisplay");
+const computerScoreDisplay = document.getElementById("computerScoreDisplay");
 
-        // Function to start playing game
-        playerOptions.forEach(option => {
-            option.addEventListener('click', function () {
-                const movesLeft = document.querySelector('.movesleft');
-                moves++;
-                movesLeft.innerText = `Moves Left: ${10 - moves}`;
+let playerScore = 0;
+let computerScore = 0;
 
-                const choiceNumber = Math.floor(Math.random() * 3);
-                const computerChoice = computerOptions[choiceNumber];
+function playGame(playerChoice) {
+    const computerChoice = choices[Math.floor(Math.random() * 3)];
 
-                // Display the chosen moves
-                displayChosenMoves(this.innerText.toLowerCase(), computerChoice);
+    let result = "";
 
-                // Function to check who wins
-                winner(this.innerText.toLowerCase(), computerChoice);
+    if (playerChoice === computerChoice) {
+        result = "IT'S A TIE!";
+    } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+        result = "YOU WIN!";
+        playerScore++;
+    } else {
+        result = "COMPUTER WINS!";
+        computerScore++;
+    }
 
-                // Calling gameOver function after 10 moves
-                if (moves == 10) {
-                    gameOver(playerOptions, movesLeft);
-                }
-            });
-        });
-    };
+    playerDisplay.textContent = `PLAYER: ${playerChoice.toUpperCase()}`;
+    computerDisplay.textContent = `COMPUTER: ${computerChoice.toUpperCase()}`;
+    resultDisplay.textContent = result;
 
-    // Function to display chosen moves
-    const displayChosenMoves = (player, computer) => {
-        const playerChosenElement = document.querySelector('.player-chosen');
-        const computerChosenElement = document.querySelector('.computer-chosen');
+    playerScoreDisplay.textContent = `PLAYER SCORE: ${playerScore}`;
+    computerScoreDisplay.textContent = `COMPUTER SCORE: ${computerScore}`;
+}
 
-        playerChosenElement.textContent = player.charAt(0).toUpperCase() + player.slice(1);
-        computerChosenElement.textContent = computer.charAt(0).toUpperCase() + computer.slice(1);
-    };
+function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
 
-    // Function to decide winner
-    const winner = (player, computer) => {
-        const result = document.querySelector('.result');
-        const playerScoreBoard = document.querySelector('.p-count');
-        const computerScoreBoard = document.querySelector('.c-count');
-
-        if (player === computer) {
-            result.textContent = 'Tie';
-        } else if (player === 'rock') {
-            if (computer === 'paper') {
-                result.textContent = 'Computer Won';
-                computerScore++;
-                computerScoreBoard.textContent = computerScore;
-            } else {
-                result.textContent = 'Player Won';
-                playerScore++;
-                playerScoreBoard.textContent = playerScore;
-            }
-        } else if (player === 'scissors') {
-            if (computer === 'rock') {
-                result.textContent = 'Computer Won';
-                computerScore++;
-                computerScoreBoard.textContent = computerScore;
-            } else {
-                result.textContent = 'Player Won';
-                playerScore++;
-                playerScoreBoard.textContent = playerScore;
-            }
-        } else if (player === 'paper') {
-            if (computer === 'scissors') {
-                result.textContent = 'Computer Won';
-                computerScore++;
-                computerScoreBoard.textContent = computerScore;
-            } else {
-                result.textContent = 'Player Won';
-                playerScore++;
-                playerScoreBoard.textContent = playerScore;
-            }
-        }
-    };
-
-    // Function to run when game is over
-    const gameOver = (playerOptions, movesLeft) => {
-        const chooseMove = document.querySelector('.move');
-        const result = document.querySelector('.result');
-        const reloadBtn = document.querySelector('.reload');
-
-        playerOptions.forEach(option => {
-            option.style.display = 'none';
-        });
-
-        chooseMove.innerText = 'Game Over!!';
-        movesLeft.style.display = 'none';
-
-        if (playerScore > computerScore) {
-            result.style.fontSize = '2rem';
-            result.innerText = 'You Won The Game';
-            result.style.color = '#308D46';
-        } else if (playerScore < computerScore) {
-            result.style.fontSize = '2rem';
-            result.innerText = 'You Lost The Game';
-            result.style.color = 'red';
-        } else {
-            result.style.fontSize = '2rem';
-            result.innerText = 'Tie';
-            result.style.color = 'grey';
-        }
-        reloadBtn.innerText = 'Restart';
-        reloadBtn.style.display = 'flex';
-        reloadBtn.addEventListener('click', () => {
-            window.location.reload();
-        });
-    };
-
-    // Calling playGame function inside game
-    playGame();
-};
-// Calling the game function
-game();
+    playerDisplay.textContent = "PLAYER: ";
+    computerDisplay.textContent = "COMPUTER: ";
+    resultDisplay.textContent = "IT'S A TIE!";
+    playerScoreDisplay.textContent = "PLAYER SCORE: 0";
+    computerScoreDisplay.textContent = "COMPUTER SCORE: 0";
+}

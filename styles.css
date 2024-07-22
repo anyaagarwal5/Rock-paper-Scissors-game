@@ -1,149 +1,61 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
 body {
-    background: #faf7f8;
-    color: #d61c66;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.game {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    background-color: hsl(345, 12%, 93%);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border: 2px solid #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(232, 233, 238, 0.907);
-    background: rgba(231, 222, 222, 0.875)
-}
-
-.title {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.score {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-h2 {
+    text-align: center;
     margin: 0;
+    align-items: center;
 }
 
-.p-count, .c-count {
-    text-align: center;
-    font-size: 2rem;
-    margin-top: 10px;
+h1 {
+    font-size: 2.5rem; /* Reduced from 2.5rem */
+    color: hsl(344, 87%, 63%);
 }
 
-.move {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+.choices {
+    margin-bottom: 30px;
 }
 
-.movesleft {
-    margin-bottom: 20px;
-    font-size: 1.2rem;
-}
-
-.options {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.rock, .paper, .scissor {
-    padding: 10px 20px;
-    border-radius: 10px;
-    background: yellow;
-    outline: none;
-    border: none;
+.choices button {
+    font-size: 5rem; /* Reduced from 7.5rem */
+    min-width: 100px; /* Reduced from 160px */
+    margin: 0 10px;
+    border-radius: 150px; /* Reduced from 250px */
+    background-color: blue;
     cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-size: 1rem;
-    color: #400a0a;
+    transition: background-color 0.5s ease;
 }
 
-.rock:hover, .paper:hover, .scissor:hover {
-    background: #0056b3;
-    transform: scale(1.1);
+.choices button:hover {
+    background-color: rgb(68, 150, 88);
 }
 
-.chosen-moves {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-    font-size: 1.2rem;
+#playerDisplay, #computerDisplay {
+    font-size: 1.5rem; /* Reduced from 2.5rem */
 }
 
-.chosen-moves > div {
-    text-align: center;
-    width: 50%;
+#resultDisplay {
+    font-size: 4rem; /* Reduced from 5rem */
+    margin: 20px 0; /* Adjusted from 30px 0 */
 }
 
-.reload {
-    display: none;
-    padding: 10px 20px;
-    background: #ffc107;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    font-size: 1rem;
-    color: #000000;
+.scoreDisplay {
+    font-size: 2rem; /* Reduced from 3rem */
 }
 
-.reload:hover {
-    background: #e0a800;
-    transform: scale(1.1);
+.greenText {
+    color: rgb(12, 210, 84);
 }
 
-.result {
-    font-size: 1.2rem;
+.redText {
+    color: rgb(204, 40, 40);
+}
+
+#playAgainButton {
+    font-size: 1.5rem; /* Adjust the size as needed */
     margin-top: 20px;
-    text-align: center;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 612px) { 
-    .title {
-        font-size: 2.5rem;
-        text-align: center;
-    }
-    .score {
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-    .options {
-        flex-direction: column;
-    }
-    .rock, .paper, .scissor {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    .chosen-moves {
-        flex-direction: column;
-    }
-    .chosen-moves > div {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+    padding: 10px 20px;
+    cursor: pointer;
 }
